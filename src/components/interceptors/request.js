@@ -20,7 +20,7 @@ export default class Request {
     const data = nx.path(this._data, 'data');
     const path = requestUrl.split('/admin/')[1];
     const action = `$${path.replace('/', '_')}`;
-    (this[action] || this.transformData).call(this, data);
+    (this[action] || this.transformFormData).call(this, data);
     return this;
   }
 

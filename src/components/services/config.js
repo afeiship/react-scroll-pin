@@ -1,10 +1,9 @@
 export default class {
 
   static VERSION = '__BUILD_VERSION__';
-  static STORE_PREFIX = 'zb-admin';
   static IMG_URL = 'http://testimg.treasurevision.cn';
   static APIS = {
-    baseUrl: '',
+    baseUrl: 'http://192.168.1.243:8080',
     items: {
       '/admin': {
         // global:

@@ -31,9 +31,10 @@ const Http = nx.declare({
       return inResponse.data.data;
     },
     error: function (inError) {
-      const {data} = inError.response;
-      AppBase.$.error = data;
-      AppBase.notify(data.errorMessage, 'error');
+      // const {data} = inError.response;
+      alert(JSON.stringify(inError))
+      // AppBase.$.error = data;
+      // AppBase.notify(data.errorMessage, 'error');
     }
   }
 });

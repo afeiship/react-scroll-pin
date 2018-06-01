@@ -30,20 +30,12 @@ export default class extends AppBase {
   };
 
   fetch() {
-    // const instance = new NxAxios();
-    // return instance.axios.post('http://192.168.1.243:8080/admin/self/mainMenu',null,{
-    //   headers:{
-    //     'Content-Type': 'application/x-www-form-urlencoded'
-    //   }
-    // })
-    return axios({
-      url: 'http://192.168.1.243:8080/admin/self/mainMenu',
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      data: null
-    })
+    $api.login({
+      username:'afei',
+      password:'123123'
+    }).then(resp=>{
+      alert(JSON.stringify(resp));
+    });
   }
 
   render() {
