@@ -31,12 +31,13 @@ export default class ReactChatScroller extends Component<ReactChatScrollerProps>
     onChange: noop
   };
 
-  shouldComponentUpdate(nextProps: Readonly<any>): boolean {
-    const { items } = nextProps;
-    if (items.length !== this.props.items.length) {
-      this.scrollToBottom();
+  private rootRef: HTMLElement | null = null;
+
+  componentDidUpdate(prevProps: Readonly<any>): void {
+    const { items } = this.props;
+    if (items.length !== prevProps.items.length) {
+      // this.scrollToBottom();
     }
-    return true;
   }
 
   private scrollToBottom = () => {
@@ -44,8 +45,7 @@ export default class ReactChatScroller extends Component<ReactChatScrollerProps>
     if (locator) {
       locator.scrollIntoView({
         behavior: 'smooth',
-        block: 'end',
-        inline: 'end'
+        block: 'end'
       });
     }
   };
@@ -55,6 +55,7 @@ export default class ReactChatScroller extends Component<ReactChatScrollerProps>
 
     return (
       <div
+        ref={(rootRef)=>this.rootRef=rootRef}
         data-component={CLASS_NAME}
         className={classNames(CLASS_NAME, className)}>
         <ReactList items={items} {...props}/>

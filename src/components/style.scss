@@ -1,6 +1,9 @@
-.react-chat-scroller{
-    >.locator{
-        height: 1px;
-        background: #eee;
-    }
+.react-chat-scroller {
+  * {
+    overflow-anchor: none;
+  }
+  > .locator {
+    height: 0.1px;
+    overflow-anchor: auto;
+  }
 }

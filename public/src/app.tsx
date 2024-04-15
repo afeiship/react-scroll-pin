@@ -5,8 +5,15 @@ import styled from 'styled-components';
 const Container = styled.div`
   width: 80%;
   margin: 30px auto 0;
-  height: 200px;
-  overflow: auto;
+  overflow-y: auto;
+  .message {
+    padding: 0.5em;
+    border-radius: 1em;
+    margin: 0.5em;
+    line-height: 1.1em;
+    background-color: lightgreen;
+    max-width: 40%;
+  }
 `;
 
 let initMessages = [
@@ -41,26 +48,30 @@ let initMessages = [
   'You are stuck with your debt if you can’t budge it.',
   'Local Area Network in Australia : The LAN down under.',
   'He broke into song because he couldn’t find the key.',
-  'A calendar’s days are numbered.',
+  'A calendar’s days are numbered.'
 ];
 
 export default (props: any) => {
   const [messages, setMessages] = React.useState(initMessages);
   // let counter = 0;
   const counter = React.useRef(0);
-  const handleItem = ({ item, index })=>{
-    return <div key={index}>{item}</div>
-  }
+  const handleItem = ({ item, index }) => {
+    return (
+      <div className="message" key={index}>
+        {item}
+      </div>
+    );
+  };
 
   useEffect(() => {
-     const interval = setInterval(() => {
-      const _messages = [...messages, `New message ${counter.current++}`];
+    const interval = setInterval(() => {
+      const newMsg = `New message ${counter.current++}`;
+      const _messages = [...messages, newMsg];
+      console.log('current msg: ', newMsg);
       setMessages([..._messages]);
     }, 1000);
     return () => clearInterval(interval);
   }, [messages]);
-
-  console.log('messages', messages.length)
 
   return (
     <Container>
