@@ -52,7 +52,7 @@ let initMessages = [
   'A calendar’s days are numbered.'
 ];
 
-export default (props: any) => {
+export default () => {
   const [messages, setMessages] = React.useState(initMessages);
   // let counter = 0;
   const counter = React.useRef(0);
