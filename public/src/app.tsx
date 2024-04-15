@@ -5,7 +5,6 @@ import styled from 'styled-components';
 const Container = styled.div`
   width: 80%;
   margin: 30px auto 0;
-  overflow-y: auto;
   .message {
     padding: 0.5em;
     border-radius: 1em;
@@ -75,7 +74,14 @@ export default (props: any) => {
 
   return (
     <Container>
-      <ReactChatScroller items={messages} template={handleItem} />
+      <ReactChatScroller
+        style={{
+          overflowY: 'auto',
+          maxHeight: '300px'
+        }}
+        items={messages}
+        template={handleItem}
+      />
     </Container>
   );
 };

@@ -1,9 +1,9 @@
-import noop from '@jswork/noop';
 import classNames from 'classnames';
 import React, { Component } from 'react';
 import ReactList, { ReactListProps } from '@jswork/react-list';
 
 const CLASS_NAME = 'react-chat-scroller';
+const supportOverflowAnchor = 'overflow-anchor' in document.documentElement.style;
 
 export type ReactChatScrollerProps = {
   /**
@@ -11,55 +11,47 @@ export type ReactChatScrollerProps = {
    */
   className?: string;
   /**
-   * Default value.
-   */
-  value?: object;
-  /**
-   * The change handler.
-   */
-  onChange?: Function;
-  /**
    * The children element.
    */
-   children?: React.ReactNode;
-} & HTMLAttributes<any> & ReactListProps;
+  children?: React.ReactNode;
+} & HTMLAttributes<any> &
+  ReactListProps;
 
 export default class ReactChatScroller extends Component<ReactChatScrollerProps> {
   static displayName = CLASS_NAME;
   static version = '__VERSION__';
-  static defaultProps = {
-    onChange: noop
-  };
+  static defaultProps = {};
 
-  private rootRef: HTMLElement | null = null;
+  private locator: HTMLElement | null = null;
+  private hasInit = false;
 
-  componentDidUpdate(prevProps: Readonly<any>): void {
-    const { items } = this.props;
-    if (items.length !== prevProps.items.length) {
-      // this.scrollToBottom();
+  componentDidUpdate(): void {
+    if (!supportOverflowAnchor) {
+      this.scrollToBottom();
+    } else {
+      if (!this.hasInit) {
+        this.scrollToBottom();
+        this.hasInit = true;
+      }
     }
   }
 
   private scrollToBottom = () => {
-    const locator = document.querySelector(`.${CLASS_NAME} .locator`);
-    if (locator) {
-      locator.scrollIntoView({
-        behavior: 'smooth',
-        block: 'end'
-      });
-    }
+    this.locator?.scrollIntoView({ behavior: 'smooth', block: 'end' });
   };
 
   render() {
-    const { className, value, onChange, children, items, ...props } = this.props;
+    const { className, style, id, children, ...props } = this.props;
 
     return (
       <div
-        ref={(rootRef)=>this.rootRef=rootRef}
         data-component={CLASS_NAME}
+        id={id}
+        style={style}
         className={classNames(CLASS_NAME, className)}>
-        <ReactList items={items} {...props}/>
-        <div className="locator"/>
+        <ReactList as="div" {...props} />
+        <div className="locator" ref={(locator) => (this.locator = locator)} />
+        {children}
       </div>
     );
   }
