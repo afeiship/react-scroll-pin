@@ -1,6 +1,9 @@
 import classNames from 'classnames';
 import React, { Component } from 'react';
 
+// https://jonaskuske.github.io/smoothscroll-anchor-polyfill/
+// https://css-tricks.com/books/greatest-css-tricks/pin-scrolling-to-bottom/
+
 const CLASS_NAME = 'react-scroll-pin';
 const supportOverflowAnchor = 'overflow-anchor' in document.documentElement.style;
 const SCROLLER_PIN_OPTIONS: ScrollIntoViewOptions = { behavior: 'smooth', block: 'end' };
