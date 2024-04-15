@@ -1,7 +1,7 @@
 {
   "name": "@jswork/react-scroll-pin",
   "homepage": "https://js.work",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A compact React component designed to handle dynamic content, while securing a scroll position at the bottom.",
   "license": "MIT",
   "main": "dist/index.js",
