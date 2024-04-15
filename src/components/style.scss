@@ -1,3 +1,7 @@
 .react-chat-scroller{
-  color: red;
+    scroll-behavior: smooth;
+    >.locator{
+        height: 1px;
+        background: #eee;
+    }
 }

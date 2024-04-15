@@ -1,6 +1,7 @@
 import noop from '@jswork/noop';
 import classNames from 'classnames';
 import React, { Component } from 'react';
+import ReactList, { ReactListProps } from '@jswork/react-list';
 
 const CLASS_NAME = 'react-chat-scroller';
 
@@ -17,34 +18,43 @@ export type ReactChatScrollerProps = {
    * The change handler.
    */
   onChange?: Function;
-} & HTMLAttributes<any>;
+  /**
+   * The children element.
+   */
+   children?: React.ReactNode;
+} & HTMLAttributes<any> & ReactListProps;
 
 export default class ReactChatScroller extends Component<ReactChatScrollerProps> {
   static displayName = CLASS_NAME;
   static version = '__VERSION__';
   static defaultProps = {
-    value: null,
     onChange: noop
   };
 
-  handleClick = () => {
-    console.log('click me!');
+  shouldComponentUpdate(nextProps: Readonly<any>): boolean {
+    const { items } = nextProps;
+    if (items.length !== this.props.items.length) {
+      this.scrollToBottom();
+    }
+    return true;
+  }
+
+  private scrollToBottom = () => {
+    const locator = document.querySelector(`.${CLASS_NAME} .locator`);
+    if (locator) {
+      locator.scrollIntoView();
+    }
   };
 
   render() {
-    const { className, value, onChange, ...props } = this.props;
+    const { className, value, onChange, children, items, ...props } = this.props;
 
     return (
       <div
         data-component={CLASS_NAME}
-        className={classNames(CLASS_NAME, className)}
-        {...props}>
-        <button
-          style={{ padding: 20, width: '100%' }}
-          onClick={this.handleClick}
-          className="icon-play">
-          Enjoy coding.
-        </button>
+        className={classNames(CLASS_NAME, className)}>
+        <ReactList items={items} {...props}/>
+        <div className="locator"/>
       </div>
     );
   }
