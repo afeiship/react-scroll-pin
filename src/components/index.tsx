@@ -42,7 +42,11 @@ export default class ReactChatScroller extends Component<ReactChatScrollerProps>
   private scrollToBottom = () => {
     const locator = document.querySelector(`.${CLASS_NAME} .locator`);
     if (locator) {
-      locator.scrollIntoView();
+      locator.scrollIntoView({
+        behavior: 'smooth',
+        block: 'end',
+        inline: 'end'
+      });
     }
   };
 
