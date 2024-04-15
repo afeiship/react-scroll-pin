@@ -17,17 +17,15 @@ export default class ReactScrollPin extends Component<ReactScrollPinProps> {
   static version = '__VERSION__';
   static defaultProps = {};
   private locator: HTMLElement | null = null;
-  private hasInit = false;
 
   componentDidUpdate(): void {
     if (!supportOverflowAnchor) {
       this.scrollToBottom();
-    } else {
-      if (!this.hasInit) {
-        this.scrollToBottom();
-        this.hasInit = true;
-      }
     }
+  }
+
+  componentDidMount(): void {
+    this.scrollToBottom();
   }
 
   private scrollToBottom = () => {
