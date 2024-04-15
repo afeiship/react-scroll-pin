@@ -20,7 +20,7 @@ nx.declare({
 
       nx.replaceInFile('README.md', [
         ['__GENERATE_DAPP__', indentString(docApp, 2)],
-        ['@/main', '@jswork/react-chat-scroller']
+        ['@/main', '@jswork/react-scroll-pin']
       ]);
     }
   }

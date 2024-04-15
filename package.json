@@ -1,8 +1,8 @@
 {
-  "name": "@jswork/react-chat-scroller",
+  "name": "@jswork/react-scroll-pin",
   "homepage": "https://js.work",
   "version": "1.0.0",
-  "description": "Scroller for chat messages.",
+  "description": "A compact React component designed to handle dynamic content, while securing a scroll position at the bottom.",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/main.d.ts",
@@ -26,6 +26,7 @@
     "@jswork/next": "^1.1.7",
     "@jswork/next-replace-in-file": "^1.0.0",
     "@jswork/next-rollup-banner": "^1.0.2",
+    "@jswork/react-list": "^1.2.2",
     "@jswork/react-markdown-props": "^1.0.1",
     "@rollup/plugin-commonjs": "^25.0.3",
     "@rollup/plugin-image": "^2.1.1",
@@ -71,7 +72,6 @@
   },
   "dependencies": {
     "@jswork/noop": "^1.0.0",
-    "@jswork/react-list": "^1.2.2",
     "classnames": "^2.2.6"
   },
   "publishConfig": {

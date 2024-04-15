@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
-import ReactChatScroller from '../../src/main';
+import RcList from '@jswork/react-list';
+import ReactScrolPin from '../../src/main';
 import styled from 'styled-components';
 
 const Container = styled.div`
   width: 80%;
   margin: 30px auto 0;
+  border: 1px solid #ccc;
   .message {
     padding: 0.5em;
     border-radius: 1em;
@@ -74,14 +76,13 @@ export default (props: any) => {
 
   return (
     <Container>
-      <ReactChatScroller
+      <ReactScrolPin
         style={{
           overflowY: 'auto',
           maxHeight: '300px'
-        }}
-        items={messages}
-        template={handleItem}
-      />
+        }}>
+        <RcList items={messages} template={handleItem}></RcList>
+      </ReactScrolPin>
     </Container>
   );
 };

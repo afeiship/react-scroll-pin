@@ -1,27 +1,21 @@
 import classNames from 'classnames';
 import React, { Component } from 'react';
-import ReactList, { ReactListProps } from '@jswork/react-list';
 
-const CLASS_NAME = 'react-chat-scroller';
+const CLASS_NAME = 'react-scroll-pin';
 const supportOverflowAnchor = 'overflow-anchor' in document.documentElement.style;
+const SCROLLER_PIN_OPTIONS: ScrollIntoViewOptions = { behavior: 'smooth', block: 'end' };
 
-export type ReactChatScrollerProps = {
+export type ReactScrollPinProps = {
   /**
    * The extended className for component.
    */
   className?: string;
-  /**
-   * The children element.
-   */
-  children?: React.ReactNode;
-} & HTMLAttributes<any> &
-  ReactListProps;
+} & React.HTMLAttributes<HTMLDivElement>;
 
-export default class ReactChatScroller extends Component<ReactChatScrollerProps> {
+export default class ReactScrollPin extends Component<ReactScrollPinProps> {
   static displayName = CLASS_NAME;
   static version = '__VERSION__';
   static defaultProps = {};
-
   private locator: HTMLElement | null = null;
   private hasInit = false;
 
@@ -37,22 +31,17 @@ export default class ReactChatScroller extends Component<ReactChatScrollerProps>
   }
 
   private scrollToBottom = () => {
-    this.locator?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    this.locator?.scrollIntoView(SCROLLER_PIN_OPTIONS);
   };
 
   render() {
-    const { className, style, id, children, ...props } = this.props;
+    const { className, children, ...props } = this.props;
 
     return (
-      <div
-        data-component={CLASS_NAME}
-        id={id}
-        style={style}
-        className={classNames(CLASS_NAME, className)}>
-        <ReactList as="div" {...props} />
-        <div className="locator" ref={(locator) => (this.locator = locator)} />
+      <section data-component={CLASS_NAME} className={classNames(CLASS_NAME, className)} {...props}>
         {children}
-      </div>
+        <div className="locator" ref={(locator) => (this.locator = locator)} />
+      </section>
     );
   }
 }

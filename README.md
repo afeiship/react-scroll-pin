@@ -1,5 +1,5 @@
-# react-chat-scroller
-> Scroller for chat messages.
+# react-scroll-pin
+> A compact React component designed to handle dynamic content, while securing a scroll position at the bottom.
 
 [![version][version-image]][version-url]
 [![license][license-image]][license-url]
@@ -8,24 +8,24 @@
 
 ## installation
 ```shell
-npm install -S @jswork/react-chat-scroller
+npm install -S @jswork/react-scroll-pin
 ```
 
 ## usage
 1. import css
   ```scss
-  @import "~@jswork/react-chat-scroller/dist/style.css";
+  @import "~@jswork/react-scroll-pin/dist/style.css";
 
   // or use sass
-  @import "~@jswork/react-chat-scroller/dist/style.scss";
+  @import "~@jswork/react-scroll-pin/dist/style.scss";
 
   // customize your styles:
-  $react-chat-scroller-options: ()
+  $react-scroll-pin-options: ()
   ```
 2. import js
   ```js
   import React from 'react';
-  import ReactChatScroller from '@jswork/react-chat-scroller';
+  import ReactScrollPin from '@jswork/react-scroll-pin';
   import styled from 'styled-components';
 
   const Container = styled.div`
@@ -36,7 +36,7 @@ npm install -S @jswork/react-chat-scroller
   export default (props: any) => {
     return (
       <Container>
-        <ReactChatScroller />
+        <ReactScrollPin />
       </Container>
     );
   };
@@ -44,19 +44,19 @@ npm install -S @jswork/react-chat-scroller
   ```
 
 ## preview
-- https://afeiship.github.io/react-chat-scroller/
+- https://afeiship.github.io/react-scroll-pin/
 
 ## license
-Code released under [the MIT license](https://github.com/afeiship/react-chat-scroller/blob/master/LICENSE.txt).
+Code released under [the MIT license](https://github.com/afeiship/react-scroll-pin/blob/master/LICENSE.txt).
 
-[version-image]: https://img.shields.io/npm/v/@jswork/react-chat-scroller
-[version-url]: https://npmjs.org/package/@jswork/react-chat-scroller
+[version-image]: https://img.shields.io/npm/v/@jswork/react-scroll-pin
+[version-url]: https://npmjs.org/package/@jswork/react-scroll-pin
 
-[license-image]: https://img.shields.io/npm/l/@jswork/react-chat-scroller
-[license-url]: https://github.com/afeiship/react-chat-scroller/blob/master/LICENSE.txt
+[license-image]: https://img.shields.io/npm/l/@jswork/react-scroll-pin
+[license-url]: https://github.com/afeiship/react-scroll-pin/blob/master/LICENSE.txt
 
-[size-image]: https://img.shields.io/bundlephobia/minzip/@jswork/react-chat-scroller
-[size-url]: https://github.com/afeiship/react-chat-scroller/blob/master/dist/react-chat-scroller.min.js
+[size-image]: https://img.shields.io/bundlephobia/minzip/@jswork/react-scroll-pin
+[size-url]: https://github.com/afeiship/react-scroll-pin/blob/master/dist/react-scroll-pin.min.js
 
-[download-image]: https://img.shields.io/npm/dm/@jswork/react-chat-scroller
-[download-url]: https://www.npmjs.com/package/@jswork/react-chat-scroller
+[download-image]: https://img.shields.io/npm/dm/@jswork/react-scroll-pin
+[download-url]: https://www.npmjs.com/package/@jswork/react-scroll-pin
