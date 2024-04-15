@@ -24,23 +24,7 @@ npm install -S @jswork/react-chat-scroller
   ```
 2. import js
   ```js
-  import React from 'react';
-  import ReactChatScroller from '@jswork/react-chat-scroller';
-  import styled from 'styled-components';
-
-  const Container = styled.div`
-    width: 80%;
-    margin: 30px auto 0;
-  `;
-
-  export default (props: any) => {
-    return (
-      <Container>
-        <ReactChatScroller />
-      </Container>
-    );
-  };
-
+__GENERATE_DAPP__
   ```
 
 ## preview
