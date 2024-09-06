@@ -23,15 +23,15 @@ export default class ReactScrollPin extends Component<ReactScrollPinProps> {
 
   componentDidUpdate(): void {
     if (!supportOverflowAnchor) {
-      this.scrollToBottom();
+      this.bottom();
     }
   }
 
   componentDidMount(): void {
-    this.scrollToBottom();
+    this.bottom();
   }
 
-  private scrollToBottom = () => {
+  public bottom = () => {
     this.locator?.scrollIntoView(SCROLLER_PIN_OPTIONS);
   };
 
