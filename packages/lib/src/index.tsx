@@ -1,5 +1,8 @@
 import classNames from 'classnames';
 import React, { Component } from 'react';
+import { ReactHarmonyEvents } from '@jswork/harmony-events';
+import type { EventMittNamespace } from '@jswork/event-mitt';
+
 
 // https://jonaskuske.github.io/smoothscroll-anchor-polyfill/
 // https://css-tricks.com/books/greatest-css-tricks/pin-scrolling-to-bottom/
@@ -19,7 +22,12 @@ export default class ReactScrollPin extends Component<ReactScrollPinProps> {
   static displayName = CLASS_NAME;
   static version = '__VERSION__';
   static defaultProps = {};
+  // 1. public events
+  static events = ['bottom'];
+  static event: EventMittNamespace.EventMitt;
+
   private locator: HTMLElement | null = null;
+  private harmonyEvents: ReactHarmonyEvents | null = null;
 
   componentDidUpdate(): void {
     if (!supportOverflowAnchor) {
@@ -28,9 +36,17 @@ export default class ReactScrollPin extends Component<ReactScrollPinProps> {
   }
 
   componentDidMount(): void {
+    // 2. init harmonyEvents
+    this.harmonyEvents = ReactHarmonyEvents.create(this);
     this.bottom();
   }
 
+  componentWillUnmount() {
+    // 3. destroy harmonyEvents
+    this.harmonyEvents?.destroy();
+  }
+
+  /* ----- public eventBus methods ----- */
   public bottom = () => {
     this.locator?.scrollIntoView(SCROLLER_PIN_OPTIONS);
   };
