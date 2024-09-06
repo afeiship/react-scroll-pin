@@ -1,6 +1,6 @@
 {
   "name": "@jswork/react-scroll-pin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/main.cjs.js",
   "module": "dist/main.esm.js",
   "types": "dist/main.d.ts",
@@ -36,5 +36,14 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
-  }
+  },
+  "keywords": [
+    "react",
+    "message",
+    "msg",
+    "scroller",
+    "scrollintoview",
+    "pin",
+    "scroll"
+  ]
 }
