@@ -13,9 +13,9 @@ const SCROLLER_PIN_OPTIONS: ScrollIntoViewOptions = { behavior: 'smooth', block:
 
 export type ReactScrollPinProps = {
   /**
-   * The extended className for component.
+   * The identity name.
    */
-  className?: string;
+  name?: string;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export default class ReactScrollPin extends Component<ReactScrollPinProps> {
@@ -52,7 +52,7 @@ export default class ReactScrollPin extends Component<ReactScrollPinProps> {
   };
 
   render() {
-    const { className, children, ...props } = this.props;
+    const { name, className, children, ...props } = this.props;
 
     return (
       <section data-component={CLASS_NAME} className={classNames(CLASS_NAME, className)} {...props}>
