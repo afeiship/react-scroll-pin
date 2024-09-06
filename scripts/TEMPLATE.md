@@ -18,9 +18,6 @@ npm install -S @jswork/react-scroll-pin
 
   // or use sass
   @import "~@jswork/react-scroll-pin/dist/style.scss";
-
-  // customize your styles:
-  $react-scroll-pin-options: ()
   ```
 2. import js
   ```js

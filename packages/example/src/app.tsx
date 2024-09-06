@@ -1,21 +1,7 @@
+import ReactScrollPin from '@jswork/react-scroll-pin/src/main';
+import '@jswork/react-scroll-pin/src/style.scss';
 import React, { useEffect } from 'react';
 import RcList from '@jswork/react-list';
-import ReactScrolPin from '../../src/main';
-import styled from 'styled-components';
-
-const Container = styled.div`
-  width: 80%;
-  margin: 30px auto 0;
-  border: 1px solid #ccc;
-  .message {
-    padding: 0.5em;
-    border-radius: 1em;
-    margin: 0.5em;
-    line-height: 1.1em;
-    background-color: lightgreen;
-    max-width: 40%;
-  }
-`;
 
 let initMessages = [
   'I wondered why the baseball was getting bigger. Then it hit me.',
@@ -52,7 +38,7 @@ let initMessages = [
   'A calendar’s days are numbered.'
 ];
 
-export default () => {
+function App() {
   const [messages, setMessages] = React.useState(initMessages);
   // let counter = 0;
   const counter = React.useRef(0);
@@ -73,16 +59,22 @@ export default () => {
     }, 1000);
     return () => clearInterval(interval);
   }, [messages]);
-
   return (
-    <Container>
-      <ReactScrolPin
-        style={{
-          overflowY: 'auto',
-          maxHeight: '300px'
-        }}>
-        <RcList items={messages} template={handleItem}></RcList>
-      </ReactScrolPin>
-    </Container>
+    <div className="m-10 p-4 shadow bg-gray-100 text-gray-800 hover:shadow-md transition-all">
+      <div className="badge badge-warning absolute right-0 top-0 m-4">
+        Build Time: {BUILD_TIME}
+      </div>
+      <div className="wp-8 mx-auto">
+        <ReactScrollPin
+          style={{
+            overflowY: 'auto',
+            maxHeight: '300px'
+          }}>
+          <RcList items={messages} template={handleItem}></RcList>
+        </ReactScrollPin>
+      </div>
+    </div>
   );
-};
+}
+
+export default App;

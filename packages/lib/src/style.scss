@@ -2,8 +2,10 @@
   * {
     overflow-anchor: none;
   }
+
   > .locator {
     height: 1px;
     overflow-anchor: auto;
+    width: 100%;
   }
 }
