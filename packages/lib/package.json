@@ -49,8 +49,5 @@
     "scrollintoview",
     "pin",
     "scroll"
-  ],
-  "dependencies": {
-    "@jswork/react-scroll-pin": "/Users/ap7/github/react-scroll-pin/packages/lib"
-  }
+  ]
 }
