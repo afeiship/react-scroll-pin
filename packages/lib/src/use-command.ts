@@ -8,11 +8,11 @@ const useCommand = (inName?: string) => {
   const listen = (cmd: string, callback: any) => RcComponent.event?.on(`${name}:${cmd}`, callback);
 
   // the command repository:
-  const bottom = (index: number) => execute('bottom', index);
+  const bottom = (options?: ScrollIntoViewOptions) => execute('bottom', options);
 
   return {
     listen,
-    bottom
+    bottom,
   };
 };
 

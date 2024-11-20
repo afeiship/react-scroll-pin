@@ -47,8 +47,9 @@ export default class ReactScrollPin extends Component<ReactScrollPinProps> {
   }
 
   /* ----- public eventBus methods ----- */
-  public bottom = () => {
-    this.locator?.scrollIntoView(SCROLLER_PIN_OPTIONS);
+  public bottom = (arg?: ScrollIntoViewOptions) => {
+    const options = typeof arg !== 'undefined' ? arg : SCROLLER_PIN_OPTIONS;
+    this.locator?.scrollIntoView(options);
   };
 
   render() {
