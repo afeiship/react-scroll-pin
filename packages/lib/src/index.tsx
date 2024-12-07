@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { Component } from 'react';
+import React, { Component, MutableRefObject } from 'react';
 import { ReactHarmonyEvents } from '@jswork/harmony-events';
 import type { EventMittNamespace } from '@jswork/event-mitt';
 
@@ -19,7 +19,7 @@ export type ReactScrollPinProps = {
   /**
    * The forwarded ref.
    */
-  forwardedRef?: React.Ref<HTMLDivElement>;
+  forwardedRef?: MutableRefObject<any>;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export default class ReactScrollPin extends Component<ReactScrollPinProps> {
