@@ -16,6 +16,10 @@ export type ReactScrollPinProps = {
    * The identity name.
    */
   name?: string;
+  /**
+   * The forwarded ref.
+   */
+  forwardedRef?: React.Ref<HTMLDivElement>;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export default class ReactScrollPin extends Component<ReactScrollPinProps> {
@@ -53,10 +57,10 @@ export default class ReactScrollPin extends Component<ReactScrollPinProps> {
   };
 
   render() {
-    const { name, className, children, ...props } = this.props;
+    const { name, className, children, forwardedRef, ...props } = this.props;
 
     return (
-      <section data-component={CLASS_NAME} className={classNames(CLASS_NAME, className)} {...props}>
+      <section data-component={CLASS_NAME} className={classNames(CLASS_NAME, className)} ref={forwardedRef} {...props}>
         {children}
         <div className="locator" ref={(locator) => (this.locator = locator)} />
       </section>
